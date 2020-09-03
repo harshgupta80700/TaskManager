@@ -12,33 +12,58 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     //console.log('connected correctly')
     const db = client.db(databaseName)
 
-    db.collection('users').insertOne({
-        name: 'Harsh',
-        age: 21
-    },(error,result)=>{
-        if(error){
-            return console.log('Unable to insert data to database')
-        }
+    // db.collection('users').insertOne({
+    //     name: 'Harsh',
+    //     age: 21
+    // },(error,result)=>{
+    //     if(error){
+    //         return console.log('Unable to insert data to database')
+    //     }
 
-        console.log(result.ops)
-    })
+    //     console.log(result.ops)
+    // })
 
-    db.collection('users').insertMany([
+    // db.collection('users').insertMany([
+    //     {
+    //         name: 'Bye baby',
+    //         age: 16,
+    //         sex: 'F'
+    //     },
+    //     {
+    //         name: 'Dragon',
+    //         age: 17,
+    //     }
+    // ],(error,result)=>{
+    //     if(error){
+    //         return console.log('Unable to insert documents')
+    //     }
+
+    //     console.log(result.ops)
+    // })
+
+
+
+    db.collection('tasks').insertMany([
         {
-            name: 'Bye baby',
-            age: 16,
-            sex: 'F'
+            description: 'Task 1',
+            completed: true
         },
         {
-            name: 'Dragon',
-            age: 17,
+            description: 'Task 2',
+            completed: false
+        },
+        {
+            description: 'Task 3',
+            completed: true
         }
     ],(error,result)=>{
         if(error){
-            return console.log('Unable to insert documents')
+            return console.log('Unable to insert data to the Task database')
         }
 
         console.log(result.ops)
+
     })
+
 
 })
