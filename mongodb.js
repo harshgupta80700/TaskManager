@@ -13,7 +13,13 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     const db = client.db(databaseName)
 
     db.collection('users').insertOne({
-        name: 'Harsh Gupta',
-        age: 20
+        name: 'Harsh',
+        age: 21
+    },(error,result)=>{
+        if(error){
+            return console.log('Unable to insert data to database')
+        }
+
+        console.log(result.ops)
     })
 })
