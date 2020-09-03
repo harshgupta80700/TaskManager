@@ -22,4 +22,23 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
 
         console.log(result.ops)
     })
+
+    db.collection('users').insertMany([
+        {
+            name: 'Bye baby',
+            age: 16,
+            sex: 'F'
+        },
+        {
+            name: 'Dragon',
+            age: 17,
+        }
+    ],(error,result)=>{
+        if(error){
+            return console.log('Unable to insert documents')
+        }
+
+        console.log(result.ops)
+    })
+
 })
