@@ -1,8 +1,16 @@
-const mongo = require('mongodb')
-const MongoClient = mongo.MongoClient
+// const mongo = require('mongodb')
+// const MongoClient = mongo.MongoClient
+// const ObjectID = mongo.ObjectID
+
+const {MongoClient,ObjectID} = require('mongodb')
+
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task_manager'
+
+const id = new ObjectID()
+console.log(id)
+
 
 MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     if(error){
@@ -43,27 +51,28 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
 
 
 
-    db.collection('tasks').insertMany([
-        {
-            description: 'Task 1',
-            completed: true
-        },
-        {
-            description: 'Task 2',
-            completed: false
-        },
-        {
-            description: 'Task 3',
-            completed: true
-        }
-    ],(error,result)=>{
-        if(error){
-            return console.log('Unable to insert data to the Task database')
-        }
+    // db.collection('tasks').insertMany([
+    //     {
+    //         description: 'Task 1',
+    //         completed: true
+    //     },
+    //     {
+    //         description: 'Task 2',
+    //         completed: false
+    //     },
+    //     {
+    //         description: 'Task 3',
+    //         completed: true
+    //     }
+    // ],(error,result)=>{
+    //     if(error){
+    //         return console.log('Unable to insert data to the Task database')
+    //     }
 
-        console.log(result.ops)
+    //     console.log(result.ops)
+    //     console.log(result.insertedIds)
 
-    })
+    // })
 
 
 })
