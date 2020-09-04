@@ -76,14 +76,24 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
 
     // })
 
-    db.collection('users').findOne({
-        _id: ObjectID("5f5212c674dbed34b060de05")
-    },(error, user)=>{
-        if(error){
-            return console.log('Unable to find!')
-        }
-        console.log(user)
-    })
+    // db.collection('users').findOne({
+    //     _id: ObjectID("5f5212c674dbed34b060de05")
+    // },(error, user)=>{
+    //     if(error){
+    //         return console.log('Unable to find!')
+    //     }
+    //     console.log(user)
+    // })
 
+    db.collection('users').find({
+        sex: null
+    }).toArray((error,user)=>{
+        if(error){
+            return console.log("Unable to connect to the database")
+        }
+
+        console.log(user)
+
+    })
 
 })
