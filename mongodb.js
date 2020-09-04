@@ -97,32 +97,48 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     // })
 
 
-    db.collection('tasks').findOne({
-        _id: ObjectID("5f513a67ccbac3261c4776b6")
-    },(error,task)=>{
-        if(error){
-            return console.log("unable to connect to the database!")
-        }
-        console.log(task)
-    })
+    // db.collection('tasks').findOne({
+    //     _id: ObjectID("5f513a67ccbac3261c4776b6")
+    // },(error,task)=>{
+    //     if(error){
+    //         return console.log("unable to connect to the database!")
+    //     }
+    //     console.log(task)
+    // })
 
 
-    db.collection('tasks').find({
-        completed: true
-    }).toArray((error,task)=>{
-        if(error){
-            return console.log(error)
+    // db.collection('tasks').find({
+    //     completed: true
+    // }).toArray((error,task)=>{
+    //     if(error){
+    //         return console.log(error)
+    //     }
+    //     console.log(task)
+    // })
+
+    // db.collection('tasks').find({
+    //     completed: true
+    // }).count((error,task)=>{
+    //     if(error){
+    //         return console.log(error)
+    //     }
+    //     console.log(task)
+    // })
+
+    const UpdatePromise = db.collection('users').updateOne({            //the third argument is promise by default if we dont provide a callback function
+        _id: ObjectID("5f513744cd274b15a0491dbc")
+    },
+    {
+        $set:{
+            name: 'Gupta ji'
         }
-        console.log(task)
     })
 
-    db.collection('tasks').find({
-        completed: true
-    }).count((error,task)=>{
-        if(error){
-            return console.log(error)
-        }
-        console.log(task)
+    UpdatePromise.then((result)=>{
+        console.log(result)
+    }).catch((error)=>{
+        console.log(error)
     })
+
 
 })
