@@ -192,17 +192,17 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     //     console.log(error)
     // })
 
-    db.collection('tasks').deleteMany({                                     //This doesnt work
-        description: 'Task 1'
-    },{
-        description: 'Task 2'
-    },{
-        description: 'Task 3'
-    }).then((result)=>{
-        console.log(result.deletedCount)
-    }).catch((error)=>{
-        console.log(error)
-    })
+    // db.collection('tasks').deleteMany({                                     //This doesnt work
+    //     description: 'Task 1'
+    // },{
+    //     description: 'Task 2'
+    // },{
+    //     description: 'Task 3'
+    // }).then((result)=>{
+    //     console.log(result.deletedCount)
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
 
 
 })
