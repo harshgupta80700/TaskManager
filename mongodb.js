@@ -85,15 +85,44 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     //     console.log(user)
     // })
 
-    db.collection('users').find({
-        sex: null
-    }).toArray((error,user)=>{
+    // db.collection('users').find({
+    //     sex: null
+    // }).toArray((error,user)=>{
+    //     if(error){
+    //         return console.log("Unable to connect to the database")
+    //     }
+
+    //     console.log(user)
+
+    // })
+
+
+    db.collection('tasks').findOne({
+        _id: ObjectID("5f513a67ccbac3261c4776b6")
+    },(error,task)=>{
         if(error){
-            return console.log("Unable to connect to the database")
+            return console.log("unable to connect to the database!")
         }
+        console.log(task)
+    })
 
-        console.log(user)
 
+    db.collection('tasks').find({
+        completed: true
+    }).toArray((error,task)=>{
+        if(error){
+            return console.log(error)
+        }
+        console.log(task)
+    })
+
+    db.collection('tasks').find({
+        completed: true
+    }).count((error,task)=>{
+        if(error){
+            return console.log(error)
+        }
+        console.log(task)
     })
 
 })
