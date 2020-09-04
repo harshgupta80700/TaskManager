@@ -125,13 +125,31 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     //     console.log(task)
     // })
 
+    // db.collection('users').updateOne({            //the third argument is promise by default if we dont provide a callback function
+    //     _id: ObjectID("5f513744cd274b15a0491dbc"),
+    //     name: 'Harsh'
+    // },
+    // {
+    //     $set:{
+    //         name: 'Gupta ji'
+    //     }
+    // }).then((result)=>{
+    //     console.log(result)
+    //     console.log(result.matchedCount)
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
+
     db.collection('users').updateOne({            //the third argument is promise by default if we dont provide a callback function
         _id: ObjectID("5f513744cd274b15a0491dbc"),
-        name: 'Harsh'
+        //name: 'Harsh'
     },
     {
-        $set:{
-            name: 'Gupta ji'
+        // $set:{
+        //     name: 'Gupta ji'
+        // }
+        $inc:{
+            age: 1
         }
     }).then((result)=>{
         console.log(result)
