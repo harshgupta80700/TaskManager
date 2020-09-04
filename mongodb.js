@@ -125,17 +125,17 @@ MongoClient.connect(connectionURL,{useNewUrlParser:true},(error,client)=>{
     //     console.log(task)
     // })
 
-    const UpdatePromise = db.collection('users').updateOne({            //the third argument is promise by default if we dont provide a callback function
-        _id: ObjectID("5f513744cd274b15a0491dbc")
+    db.collection('users').updateOne({            //the third argument is promise by default if we dont provide a callback function
+        _id: ObjectID("5f513744cd274b15a0491dbc"),
+        name: 'Harsh'
     },
     {
         $set:{
             name: 'Gupta ji'
         }
-    })
-
-    UpdatePromise.then((result)=>{
+    }).then((result)=>{
         console.log(result)
+        console.log(result.matchedCount)
     }).catch((error)=>{
         console.log(error)
     })
