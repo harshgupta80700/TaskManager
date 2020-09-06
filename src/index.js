@@ -54,6 +54,27 @@ app.get('/users/:id',(req,res)=>{
     })
 })
 
+app.get('/tasks',(req,res)=>{
+    Task.find({}).then((users)=>{
+        res.send(users)
+    }).catch((e)=>{
+        res.status(500).send()
+    })
+})
+
+app.get('/tasks/:id',(req,res)=>{
+    console.log(req.params)
+    const _id = req.params.id
+    Task.findById(_id).then((tasks)=>{
+        if(!tasks){
+            return res.status(404).send()
+        }
+        res.send(tasks)
+    }).catch((e)=>{
+        res.status(500).send()
+    })
+})
+
 app.listen(port,()=>{
     console.log('Server is on port',port)
 })
