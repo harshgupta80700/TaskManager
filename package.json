@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/harshgupta80700/TaskManager#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "mongodb": "^3.6.1",
     "mongoose": "^5.10.3",
     "validator": "^13.1.1"
