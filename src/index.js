@@ -33,6 +33,12 @@ app.post('/task',(req,res)=>{
 })
 
 
+app.get('/users',(req,res)=>{
+    User.find({}).then((users)=>{
+        res.send(users)
+    })
+})
+
 app.listen(port,()=>{
     console.log('Server is on port',port)
 })
