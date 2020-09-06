@@ -27,9 +27,10 @@ const User = mongoose.model('User',{
         type: String,
         required: true,
         trim: true,
+        //minlength: 7,
         validate(value){
             if(value.length <= 6){throw Error('password in short in length')}
-            if(value.includes('password')){throw Error('password cannot contain password')}
+            if(value.toLowercase().includes('password')){throw Error('password cannot contain password')}
         }
     },
     age:{
@@ -44,9 +45,9 @@ const User = mongoose.model('User',{
 })
 
 const me = User({
-    name: ' Kumar   ',
+    name: ' Kumar Singh  ',
     email: "Harsh@example.com",
-    password: 'password    '
+    password: 'passworismy   '
 })
 
 me.save().then((result)=>{
