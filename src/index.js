@@ -36,6 +36,21 @@ app.post('/task',(req,res)=>{
 app.get('/users',(req,res)=>{
     User.find({}).then((users)=>{
         res.send(users)
+    }).catch((e)=>{
+        res.status(500).send()
+    })
+})
+
+app.get('/users/:id',(req,res)=>{
+    console.log(req.params)
+    const _id = req.params.id
+    User.findById(_id).then((users)=>{
+        if(!users){
+            return res.status(404).send()
+        }
+        res.send(users)
+    }).catch((e)=>{
+        res.status(500).send(e)
     })
 })
 
