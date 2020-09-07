@@ -27,4 +27,15 @@ const add = (a,b)=>{
 //     console.log(e)
 // })
 
-const mongoose = require('../src/db/mongoose')
+require('../src/db/mongoose')
+const User = require('../src/models/user')
+
+
+User.findByIdAndUpdate('5f52a6698400f51648fbf60a',{age: 21}).then((user)=>{
+    console.log(user)
+    return User.countDocuments({age:21})
+}).then((result)=>{
+    console.log(result)
+}).catch((e)=>{
+    console.log(e)
+})
