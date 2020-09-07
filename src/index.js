@@ -1,8 +1,5 @@
 const express = require('express')
 require('./db/mongoose')
-const User = require('./models/user')
-const Task = require('./models/tasks')
-require('./models/tasks')
 
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
@@ -12,19 +9,26 @@ app.use(express.json())
 
 const port = process.env.PORT || 3000
 
-// const router = new express.Router()
-
-// router.get('/test',(req,res)=>{
-//     res.send('This is the test route')
-// })
 app.use(userRouter)
 app.use(taskRouter)
-
-
-
-
 
 
 app.listen(port,()=>{
     console.log('Server is on port',port)
 })
+
+const bycryptjs = require('bcryptjs')
+
+const myfunction = async ()=>{
+    const password = 'Red12345!'
+    const hashedpassword = await bycryptjs.hash(password,8)
+
+    console.log(password)
+    console.log(hashedpassword)
+
+    const isMatched = await bycryptjs.compare('red',hashedpassword)
+    console.log(isMatched)
+
+}
+
+myfunction()
