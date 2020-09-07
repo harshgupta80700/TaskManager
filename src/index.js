@@ -136,6 +136,32 @@ app.get('/tasks/:id',async (req,res)=>{
     // })
 })
 
+
+app.patch('/users/:id',async(req,res)=>{
+
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['name','email','password','age']
+    const isValidUpdate = updates.every((value) => allowedUpdates.includes(value))
+    console.log(isValidUpdate)
+    console.log(updates)
+
+    if(!isValidUpdate){
+        return res.status(400).send({
+            error: 'Not a Valid Parameter'
+        })
+    }
+
+    try{
+        const user = await User.findByIdAndUpdate(req.params.id,req.body,{runValidators:true,new:true})
+        if(!user){
+            return res.status(404).send()
+        }
+        res.status(200).send(user)
+    }catch(e){
+        res.status(400).send(e)
+    }
+})
+
 app.listen(port,()=>{
     console.log('Server is on port',port)
 })
