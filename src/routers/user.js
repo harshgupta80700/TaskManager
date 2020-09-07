@@ -2,7 +2,7 @@ const express =  require('express')
 const User = require('../models/user')
 const router = new express.Router
 
-router.get('/test',(req,res)=>{
+router.get('/testuser',(req,res)=>{
     res.send('This is the test route from a new file')
 })
 
