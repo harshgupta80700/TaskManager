@@ -27,6 +27,22 @@ router.post('/users',async (req,res)=>{
 
 })
 
+router.post('/users/login',async(req,res)=>{
+
+    if(!req.body.email || !req.body.password){
+        return res.status(400).send({
+            message: 'Provide a email and password'
+        })
+    }
+
+   try{
+        const user = await User.findByCredentials(req.body.email,req.body.password)
+        res.status(200).send(user)
+   }catch(e){
+        res.status(400).send(e)
+   }
+})
+
 router.get('/users', async(req,res)=>{
 
     try{
