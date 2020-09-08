@@ -17,18 +17,18 @@ app.listen(port,()=>{
     console.log('Server is on port',port)
 })
 
-const bycryptjs = require('bcryptjs')
+// const bycryptjs = require('bcryptjs')
 
-const myfunction = async ()=>{
-    const password = 'Red12345!'
-    const hashedpassword = await bycryptjs.hash(password,8)
+// const myfunction = async ()=>{
+//     const password = 'Red12345!'
+//     const hashedpassword = await bycryptjs.hash(password,8)
 
-    console.log(password)
-    console.log(hashedpassword)
+//     console.log(password)
+//     console.log(hashedpassword)
 
-    const isMatched = await bycryptjs.compare('red',hashedpassword)
-    console.log(isMatched)
+//     const isMatched = await bycryptjs.compare('red',hashedpassword)
+//     console.log(isMatched)
 
-}
+// }
 
-myfunction()
+// myfunction()
