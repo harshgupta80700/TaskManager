@@ -9,8 +9,18 @@ app.use(express.json())
 
 const port = process.env.PORT || 3000
 
+// app.use((req,res,next)=>{
+//     if(req.method === 'GET'){
+//         res.send('Get request are disabled')
+//     }else{
+//         next()
+//     }
+// })
+
 app.use((req,res,next)=>{
-    console.log(req.method,req.path)
+    if(req.method){
+        res.status(503).send('The site is under maintenance')
+    }
 })
 
 app.use(userRouter)
