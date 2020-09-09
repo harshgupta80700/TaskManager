@@ -18,9 +18,10 @@ const port = process.env.PORT || 3000
 // })
 
 app.use((req,res,next)=>{
-    if(req.method){
-        res.status(503).send('The site is under maintenance')
-    }
+    // if(req.method){
+    //     res.status(503).send('The site is under maintenance')
+    // }
+    res.status(503).send('Site is currently down check back soon!')
 })
 
 app.use(userRouter)
